@@ -1,0 +1,7 @@
+[package]
+name = "oxys-hip"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+oxys-hip-sys.workspace = true

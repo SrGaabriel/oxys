@@ -1,0 +1,6 @@
+[package]
+name = "oxys-rocm"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
