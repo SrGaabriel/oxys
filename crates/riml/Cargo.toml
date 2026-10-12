@@ -1,6 +1,8 @@
 [package]
 name = "riml"
 description = "A minimal, portable and efficient machine learning framework"
+repository = "https://github.com/SrGaabriel/riml"
+license-file = "../../LICENSE"
 version.workspace = true
 edition.workspace = true
 
