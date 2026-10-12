@@ -1,5 +1,5 @@
 [package]
-name = "oxys-cuda"
+name = "rubrica-cuda"
 version.workspace = true
 edition.workspace = true
 

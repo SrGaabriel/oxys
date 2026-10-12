@@ -1,0 +1,6 @@
+[package]
+name = "rubrica-wgpu"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

@@ -1,6 +1,6 @@
 use std::ffi::c_void;
 
-use oxys_hip_sys::{GpuBuffer, Result, get_function, launch_kernel, load_kernel, synchronize};
+use rubrica_hip_sys::{GpuBuffer, Result, get_function, launch_kernel, load_kernel, synchronize};
 
 pub static VADD_CO: &[u8] = include_bytes!(concat!(env!("OUT_DIR"), "/vadd.co"));
 

@@ -1,5 +1,5 @@
 [package]
-name = "oxys-hip-sys"
+name = "rubrica-hip-sys"
 version.workspace = true
 edition.workspace = true
 

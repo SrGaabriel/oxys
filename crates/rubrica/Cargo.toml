@@ -1,5 +1,5 @@
 [package]
-name = "oxys"
+name = "rubrica"
 description = "A minimal, portable and efficient machine learning framework"
 version.workspace = true
 edition.workspace = true

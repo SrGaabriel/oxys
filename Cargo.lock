@@ -3,24 +3,28 @@
 version = 4
 
 [[package]]
-name = "oxys"
+name = "rubrica"
 version = "0.1.0"
 
 [[package]]
-name = "oxys-cuda"
+name = "rubrica-cuda"
 version = "0.1.0"
 
 [[package]]
-name = "oxys-hip"
+name = "rubrica-hip"
 version = "0.1.0"
 dependencies = [
- "oxys-hip-sys",
+ "rubrica-hip-sys",
 ]
 
 [[package]]
-name = "oxys-hip-sys"
+name = "rubrica-hip-sys"
 version = "0.1.0"
 
 [[package]]
-name = "oxys-rocm"
+name = "rubrica-rocm"
+version = "0.1.0"
+
+[[package]]
+name = "rubrica-wgpu"
 version = "0.1.0"
