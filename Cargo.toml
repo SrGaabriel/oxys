@@ -7,7 +7,7 @@ version = "0.1.0"
 edition = "2024"
 
 [workspace.dependencies]
-rubrica-cuda.path = "crates/cuda"
-rubrica-rocm.path = "crates/rocm"
-rubrica-hip.path = "crates/hip"
-rubrica-hip-sys.path = "crates/hip-sys"
+riml-cuda.path = "crates/cuda"
+riml-rocm.path = "crates/rocm"
+riml-hip.path = "crates/hip"
+riml-hip-sys.path = "crates/hip-sys"

@@ -1,5 +1,5 @@
 [package]
-name = "rubrica-rocm"
+name = "riml-rocm"
 version.workspace = true
 edition.workspace = true
 

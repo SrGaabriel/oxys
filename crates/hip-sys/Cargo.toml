@@ -1,5 +1,5 @@
 [package]
-name = "rubrica-hip-sys"
+name = "riml-hip-sys"
 version.workspace = true
 edition.workspace = true
 
