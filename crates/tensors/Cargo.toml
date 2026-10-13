@@ -1,0 +1,6 @@
+[package]
+name = "riml-tensors"
+edition.workspace = true
+version.workspace = true
+
+[dependencies]

@@ -3,6 +3,7 @@ use std::ffi::{c_char, c_int, c_uint, c_void};
 pub type HipError = c_int;
 pub type HipModule = *mut c_void;
 pub type HipFunction = *mut c_void;
+pub type HipEvent = *mut c_void;
 pub type HipStream = *mut c_void;
 
 pub const _MEMCPY_RAM_TO_RAM: c_int = 0;
@@ -52,4 +53,14 @@ unsafe extern "C" {
     pub(crate) fn hipFree(ptr: *mut c_void) -> HipError;
     #[must_use]
     pub(crate) fn hipGetErrorString(err: HipError) -> *const c_char;
+    #[must_use]
+    pub(crate) fn hipEventCreate(event: *mut HipEvent) -> HipError;
+    #[must_use]
+    pub(crate) fn hipEventRecord(event: HipEvent, stream: HipStream) -> HipError;
+    #[must_use]
+    pub(crate) fn hipEventSynchronize(event: HipEvent) -> HipError;
+    #[must_use]
+    pub(crate) fn hipEventElapsedTime(ms: *mut f32, start: HipEvent, stop: HipEvent) -> HipError;
+    #[must_use]
+    pub(crate) fn hipEventDestroy(event: HipEvent) -> HipError;
 }

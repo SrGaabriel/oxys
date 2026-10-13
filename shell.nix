@@ -1,18 +1,20 @@
 {
-  pkgs ? import <nixpkgs> { },
+  pkgs ? import <nixpkgs> {
+    overlays = [
+      (import (fetchTarball "https://github.com/oxalica/rust-overlay/archive/master.tar.gz"))
+    ];
+  },
 }:
 
+let
+  toolchain = pkgs.rust-bin.fromRustupToolchainFile ./rust-toolchain.toml;
+in
 pkgs.mkShell {
   packages = with pkgs; [
-    cargo
-    rustc
-    rustfmt
-    clippy
-    rust-analyzer
+    toolchain
     cmake
     zstd
     rocmPackages.clr
     rocmPackages.rocminfo
   ];
-  RUST_SRC_PATH = "${pkgs.rustPlatform.rustLibSrc}";
 }

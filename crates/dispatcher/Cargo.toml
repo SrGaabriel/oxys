@@ -1,0 +1,7 @@
+[package]
+name = "riml-dispatcher"
+edition.workspace = true
+version.workspace = true
+
+[dependencies]
+riml-hip.workspace = true
