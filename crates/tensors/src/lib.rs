@@ -121,3 +121,18 @@ impl<T, const D: usize> TensorLike for Tensor<T, D> {
         Self::compute_stride(&self.shape) == self.stride
     }
 }
+
+impl<T> Vector <T> {
+    pub fn len(&self) -> usize {
+        self.shape[0]
+    }
+}
+
+impl<T> Matrix <T> {
+    pub fn rows(&self) -> usize {
+        self.shape[0]
+    }
+    pub fn cols(&self) -> usize {
+        self.shape[1]
+    }
+}
