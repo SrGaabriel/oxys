@@ -10,9 +10,19 @@ version = "0.1.0"
 tokenizers = "1.0.0-rc.2"
 wgpu = "30"
 faer = "0.24"
+thiserror = "2"
 
 # Local
 riml-cuda.path = "crates/cuda"
 riml-hip.path = "crates/hip"
 riml-hip-sys.path = "crates/hip-sys"
 riml-rocm.path = "crates/rocm"
+
+[workspace.lints.clippy]
+cast_possible_truncation = "allow"
+disallowed_methods = "deny"
+missing_errors_doc = "allow"
+missing_panics_doc = "allow"
+must_use_candidate = "allow"
+pedantic = { level = "warn", priority = -1 }
+return_self_not_must_use = "allow"

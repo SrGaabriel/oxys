@@ -14,7 +14,7 @@ pkgs.mkShell {
     toolchain
     cmake
     zstd
-    rocmPackages.clr
-    rocmPackages.rocminfo
+    # rocmPackages.clr
+    # rocmPackages.rocminfo
   ];
 }
