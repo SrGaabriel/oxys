@@ -1,3 +1,3 @@
-pub fn matmul<const N : usize>() {
-
+pub fn matmul() {
+    
 }

@@ -1,20 +1,20 @@
+use std::marker::PhantomData;
+
 use thiserror::Error;
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub enum Location {
-    Host,
-    Device,
+pub trait Location {
+    fn vadd();
 }
 
-pub struct Tensor<T, const D: usize> {
+pub struct Tensor<L: Location, T, const D: usize> {
     data: Vec<T>,
     shape: [usize; D],
     stride: [usize; D],
-    location: Location,
+    _p: PhantomData<L>,
 }
 
-pub type Vector<T> = Tensor<T, 1>;
-pub type Matrix<T> = Tensor<T, 2>;
+pub type Vector<L, T> = Tensor<L, T, 1>;
+pub type Matrix<L, T> = Tensor<L, T, 2>;
 
 pub trait TensorLike {
     fn shape(&self) -> &[usize];
@@ -24,7 +24,6 @@ pub trait TensorLike {
         self.shape().len()
     }
     fn is_contiguous(&self) -> bool;
-    fn location(&self) -> Location;
     fn is_empty(&self) -> bool {
         self.numel() == 0
     }
@@ -36,7 +35,7 @@ pub enum TensorError {
     ShapeMismatch { expected: usize, got: usize },
 }
 
-impl<T, const D: usize> Tensor<T, D> {
+impl<L: Location, T, const D: usize> Tensor<L, T, D> {
     pub fn new(shape: [usize; D], data: Vec<T>) -> Result<Self, TensorError> {
         let expected: usize = shape.iter().product();
         if data.len() != expected {
@@ -50,18 +49,8 @@ impl<T, const D: usize> Tensor<T, D> {
             data,
             shape,
             stride,
-            location: Location::Host,
+            _p: PhantomData,
         })
-    }
-
-    pub fn new_with_location(
-        shape: [usize; D],
-        data: Vec<T>,
-        location: Location,
-    ) -> Result<Self, TensorError> {
-        let mut t = Self::new(shape, data)?;
-        t.location = location;
-        Ok(t)
     }
 
     pub fn from_shape_fn<F>(shape: [usize; D], mut f: F) -> Self
@@ -74,7 +63,7 @@ impl<T, const D: usize> Tensor<T, D> {
             data,
             shape,
             stride: Self::compute_stride(&shape),
-            location: Location::Host,
+            _p: PhantomData,
         }
     }
 
@@ -99,16 +88,14 @@ impl<T, const D: usize> Tensor<T, D> {
     }
 }
 
-impl<T, const D: usize> TensorLike for Tensor<T, D> {
+impl<L: Location, T, const D: usize> TensorLike for Tensor<L, T, D> {
     fn shape(&self) -> &[usize] {
         &self.shape
     }
     fn numel(&self) -> usize {
         self.data.len()
     }
-    fn location(&self) -> Location {
-        self.location
-    }
+
     fn stride(&self) -> &[usize] {
         &self.stride
     }
@@ -117,7 +104,7 @@ impl<T, const D: usize> TensorLike for Tensor<T, D> {
     }
 }
 
-impl<T> Matrix<T> {
+impl<L: Location, T> Matrix<L, T> {
     pub fn rows(&self) -> usize {
         self.shape[0]
     }

@@ -93,7 +93,6 @@ fn main() {
     let archs = target_archs();
 
     let opt = format!("-O{}", env::var("OPT_LEVEL").unwrap_or_else(|_| "3".into()));
-
     let mut hip_files: Vec<PathBuf> = std::fs::read_dir(&src_dir)
         .unwrap_or_else(|e| panic!("cannot read {}: {e}", src_dir.display()))
         .filter_map(|entry| entry.ok().map(|e| e.path()))
