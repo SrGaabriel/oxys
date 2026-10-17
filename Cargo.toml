@@ -1,6 +1,7 @@
 [workspace]
 members = ["crates/*"]
 resolver = "3"
+default-members = ["crates/riml"]
 
 [workspace.package]
 edition = "2024"
@@ -17,6 +18,7 @@ riml-cuda.path = "crates/cuda"
 riml-hip.path = "crates/hip"
 riml-hip-sys.path = "crates/hip-sys"
 riml-rocm.path = "crates/rocm"
+riml-dispatcher.path = "crates/dispatcher"
 
 [workspace.lints.clippy]
 cast_possible_truncation = "allow"

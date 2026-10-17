@@ -4,4 +4,7 @@ edition.workspace = true
 version.workspace = true
 
 [dependencies]
-riml-hip.workspace = true
+riml-hip = { workspace = true, optional = true }
+
+[features]
+rocm = ["dep:riml-hip"]

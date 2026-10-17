@@ -7,3 +7,8 @@ version.workspace = true
 edition.workspace = true
 
 [dependencies]
+riml-dispatcher = { optional = true, workspace = true }
+
+[features]
+default = []
+rocm = ["riml-dispatcher/rocm"]
